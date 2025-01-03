@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Isaque Samir Bezerra de Melo Silva</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #00796b;
+            position: relative;
+            background-color: #4db6ac;
+            border-radius: 10px 10px 0 0;
+            color: white;
+            animation: slideIn 2s ease;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        header canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            animation: profileBounce 2s ease;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .profile-info h2 {
+            margin: 0;
+            color: #00796b;
+            font-size: 28px;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #757575;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            background-color: #00796b;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+            border-radius: 5px;
+            animation: fadeIn 1s ease;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e0f2f1;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .section ul li:hover {
+            transform: scale(1.02);
+        }
+
+        .contact {
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeInUp 2s ease;
+        }
+
+        .contact button {
+            background-color: #00796b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact button:hover {
+            background-color: #004d40;
+            transform: scale(1.1);
+        }
+
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .projects a {
+            display: block;
+            padding: 10px;
+            background-color: #00796b;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            width: calc(33.33% - 20px);
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .projects a:hover {
+            transform: scale(1.05);
+        }
+
+        .bulletin {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .bulletin img {
+            width: calc(33.33% - 20px);
+            border-radius: 5px;
+            height: 70vh;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile img {
+                margin-bottom: 10px;
+            }
+
+            .profile-info {
+                text-align: center;
+            }
+
+            .projects a,
+            .bulletin img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Currículo</h1>
+            <canvas id="headerCanvas"></canvas>
+        </header>
+
+        <div class="profile">
+            <img src="samir.jpg" alt="Foto de Perfil">
+            <div class="profile-info">
+                
+                <h2>Nome Completo</h2>
+                <h2 style="color: rgb(81, 81, 81);">Isaque Samir Bezerra de Melo Silva</h2>
+                <p>Auxiliar Técnico de Informática</p>
+                <p>Email: isaquesamirbezerra@gmail.com</p>
+                <p>Telefone: (15) 988163032</p>
+                <p>Localização: Cidade: Buri, Estado: Sp</p>
+            </div>
+        </div>
+
+        <div class="map-container" id="map"></div>
+
+        <div class="section">
+            <h3>Resumo Profissional</h3>
+            <p>Técnico de Informática com mais de 5 anos de experiência na área de suporte técnico, manutenção de
+                computadores e redes, além de conhecimento em programação e desenvolvimento web.</p>
+        </div>
+
+        <div class="section">
+            <h3>Experiência Profissional</h3>
+            <ul>
+                <li>
+                    <strong>Empresa XYZ</strong> - Técnico de Suporte (2018 - Presente)
+                    <ul>
+                        <li>Suporte técnico a usuários e manutenção de equipamentos.</li>
+                        <li>Gerenciamento de redes e configuração de servidores.</li>
+                        <li>Desenvolvimento de scripts para automatização de processos.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Empresa ABC</strong> - Assistente de TI (2015 - 2018)
+                    <ul>
+                        <li>Instalação e configuração de software e hardware.</li>
+                        <li>Manutenção preventiva e corretiva de computadores.</li>
+                        <li>Atendimento ao cliente e suporte remoto.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Educação</h3>
+            <ul>
+                <li>
+                    <strong>Instituição de Ensino</strong> - Curso Técnico em Informática (2013 - 2015)
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Habilidades</h3>
+            <ul>
+                <li>Manutenção de Computadores</li>
+                <li>Configuração de Redes</li>
+                <li>Programação (JavaScript, Python)</li>
+                <li>Suporte Técnico</li>
+                <li>Desenvolvimento Web</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3 style="text-align: center;">Projetos realizados</h3>
+            <div class="projects" style="margin-top: 10px; display: flex; flex-direction: column; align-items: center;">
+                <a href="https://projeto1.com">Mapeamento Cultura Itapeva</a>
+                <a href="https://projeto2.com">Projeto 2</a>
+                <a href="https://projeto3.com">Projeto 3</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 style="text-align: center;">Boletim do Curso Técnico</h3>
+            <div class="bulletin" style="margin-top: 10px;">
+                <img src="boletim primeiro semestre.jpg" alt="Boletim 1">
+                <img style="display: none;" src="andamento.png" alt="Boletim 2">
+                <img style="display: none;" src="andamento.png" alt="Boletim 3">
+            </div>
+        </div>
+
+        <div class="contact">
+            <button onclick="downloadCV()">Baixar Currículo</button>
+        </div>
+    </div>
+
+    <script>
+        // Animação no header com Canvas
+        const canvas = document.getElementById('headerCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = 150;
+
+        const wave = {
+            y: canvas.height / 2,
+            length: 0.01,
+            amplitude: 20,
+            frequency: 0.01
+        };
+
+        function drawWave() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height / 2);
+
+            for (let i = 0; i < canvas.width; i++) {
+                ctx.lineTo(i, wave.y + Math.sin(i * wave.length + wave.frequency) * wave.amplitude);
+            }
+
+            ctx.strokeStyle = '#00796b';
+            ctx.stroke();
+
+            wave.frequency += 0.03;
+
+            requestAnimationFrame(drawWave);
+        }
+
+        drawWave();
+
+        // Gerar imagem do currículo
+// Gerar imagem do currículo
+function downloadCV() {
+    const container = document.querySelector('.container');
+    const mapContainer = document.querySelector('.map-container');
+    const sectionsToHide = document.querySelectorAll('.section:nth-of-type(n+6)'); // Seções após Habilidades
+    const downloadButton = document.querySelector('.contact button');
+
+    // Ocultar o mapa e outras seções
+    if (mapContainer) {
+        mapContainer.style.display = 'none';
+    }
+    sectionsToHide.forEach(section => section.style.display = 'none'); // Oculta seções após Habilidades
+    if (downloadButton) {
+        downloadButton.style.display = 'none'; // Oculta o botão de download
+    }
+
+    // Ajuste para o tamanho da fonte e formato da imagem
+    const originalFontSize = window.getComputedStyle(container).fontSize;
+    const newFontSize = '20px'; // Aumenta o tamanho da fonte temporariamente
+
+    // Estilo temporário para deixar a imagem mais larga e fontes maiores
+    container.style.width = '1200px'; // Aumenta a largura da área visível
+    container.style.transform = 'scale(0.9)'; // Reduz a escala para caber melhor na largura
+    container.style.transformOrigin = 'top left'; // Mantém a escala do topo
+    container.style.whiteSpace = 'normal'; // Quebra de linha automática
+    container.style.fontSize = newFontSize; // Aumenta o tamanho da fonte
+
+    // Captura a imagem
+    html2canvas(container).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'curriculo.jpg';
+        link.href = canvas.toDataURL("image/jpeg");
+        link.click();
+
+        // Restaura o layout original
+        if (mapContainer) {
+            mapContainer.style.display = ''; // Restaura a exibição original do mapa
+        }
+        sectionsToHide.forEach(section => section.style.display = ''); // Restaura as seções após Habilidades
+        if (downloadButton) {
+            downloadButton.style.display = ''; // Restaura o botão de download
+        }
+        container.style.width = ''; // Restaura a largura original
+        container.style.transform = ''; // Remove a escala aplicada
+        container.style.whiteSpace = ''; // Remove o ajuste de quebra de linha
+        container.style.fontSize = originalFontSize; // Restaura o tamanho original da fonte
+    });
+}
+
+
+        // Google Maps
+        function initMap() {
+            // Coordenadas do centro do mapa
+            const mapOptions = {
+                zoom: 16,
+                center: { lat: -23.79855329834221, lng: -48.59701779598242 }, // Coordenadas do centro do mapa
+            };
+            const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+             
+            // Coordenadas do marcador
+            const markerCoordinates = { lat: -23.79855329834221, lng: -48.59701779598242 }; // Altere para as coordenadas desejadas
+
+            // Adicionar um marcador no mapa
+            const marker = new google.maps.Marker({
+                position: markerCoordinates,
+                map: map,
+                title: 'Localização do Marcador'
+            });
+        }
+
+        // Inicializar o mapa após a página carregar
+        window.onload = initMap;
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDayKwEsCiDPu7HrzoM6Al_wG1klaxsoPg&callback=initMap"></script>
+</body>
+
+</html>
